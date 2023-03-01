@@ -1,13 +1,10 @@
 {
-  "name": "@dashkite/dracarys",
+  "name": "@dashkite/dohaeras",
   "version": "0.0.0",
-  "description": "Dynamic application cache based on DynamoDB",
+  "description": "Dynamic application cache based on the Cache API",
   "exports": {
     ".": {
-      "node": "./build/node/src/index.js"
-    },
-    "./*": {
-      "node": "./build/node/src/*.js"
+      "browser": "./build/browser/src/index.js"
     }
   },
   "files": [
@@ -19,29 +16,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dashkite/dracarys.git"
+    "url": "git+https://github.com/dashkite/dohaeras.git"
   },
   "bugs": {
-    "url": "https://github.com/dashkite/dracarys/issues"
+    "url": "https://github.com/dashkite/dohaeras/issues"
   },
-  "homepage": "https://github.com/dashkite/dracarys#readme",
+  "homepage": "https://github.com/dashkite/dohaeras#readme",
   "devDependencies": {
-    "@dashkite/amen": "^0.2.0",
+    "@dashkite/amen": "^0.2.1",
     "@dashkite/amen-console": "^0.0.2",
     "@dashkite/assert": "^0.1.4",
-    "@dashkite/dolores": "link:../dolores",
     "@dashkite/genie": "^0.5.11",
-    "@dashkite/genie-presets": "^0.6.2",
-    "@dashkite/sky-presets": "link:../sky-presets"
-  },
-  "dependencies": {
-    "@dashkite/bake": "^0.0.6",
-    "@dashkite/joy": "^0.3.16",
-    "@dashkite/lru-cache": "link:../lru-cache",
-    "@dashkite/maeve": "link:../maeve",
-    "@dashkite/media-type": "link:../media-type",
-    "cache-control-parser": "^2.0.2",
-    "handlebars": "^4.7.7",
-    "js-yaml": "^4.1.0"
+    "@dashkite/genie-modules": "link:../genie-modules",
+    "@dashkite/genie-presets": "link:../genie-presets",
+    "@dashkite/katana": "^0.4.8",
+    "@dashkite/mimic": "^0.2.4",
+    "coffeescript": "^2.7.0"
   }
 }

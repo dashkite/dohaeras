@@ -1,18 +1,5 @@
-import FS from "node:fs/promises"
-
 import * as t from "@dashkite/genie"
 import preset from "@dashkite/genie-presets"
-import sky from "@dashkite/sky-presets"
-
-import {
-  createTable
-  updateTimeToLive 
-  deleteTable
-  query
-  deleteItem
-} from "@dashkite/dolores/dynamodb"
-
-import YAML from "js-yaml"
 
 preset t
 
