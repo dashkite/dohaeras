@@ -1,0 +1,47 @@
+{
+  "name": "@dashkite/dracarys",
+  "version": "0.0.0",
+  "description": "Dynamic application cache based on DynamoDB",
+  "exports": {
+    ".": {
+      "node": "./build/node/src/index.js"
+    },
+    "./*": {
+      "node": "./build/node/src/*.js"
+    }
+  },
+  "files": [
+    "build/node/src"
+  ],
+  "scripts": {
+    "test": "genie test",
+    "build": "genie build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dashkite/dracarys.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dashkite/dracarys/issues"
+  },
+  "homepage": "https://github.com/dashkite/dracarys#readme",
+  "devDependencies": {
+    "@dashkite/amen": "^0.2.0",
+    "@dashkite/amen-console": "^0.0.2",
+    "@dashkite/assert": "^0.1.4",
+    "@dashkite/dolores": "link:../dolores",
+    "@dashkite/genie": "^0.5.11",
+    "@dashkite/genie-presets": "^0.6.2",
+    "@dashkite/sky-presets": "link:../sky-presets"
+  },
+  "dependencies": {
+    "@dashkite/bake": "^0.0.6",
+    "@dashkite/joy": "^0.3.16",
+    "@dashkite/lru-cache": "link:../lru-cache",
+    "@dashkite/maeve": "link:../maeve",
+    "@dashkite/media-type": "link:../media-type",
+    "cache-control-parser": "^2.0.2",
+    "handlebars": "^4.7.7",
+    "js-yaml": "^4.1.0"
+  }
+}

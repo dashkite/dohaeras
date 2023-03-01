@@ -1,0 +1,119 @@
+$references:
+  request: &request
+    domain: acme.io
+    method: get
+    headers:
+      - accept:
+          - application/json
+  response: &response
+    status: 200
+    description: ok
+    headers:
+      cache-control:
+        - max-age=2
+      vary:
+        - accept
+basic:
+  request: &request-account-alice
+    <<: *request
+    resource:
+      name: account
+      bindings:
+        email: alice@acme.org
+
+  response:  &response-account-alice
+    <<: *response
+    content:
+      address: abc123
+      email: alice@acme.org
+
+
+invalidation:
+  targeted:
+    cache:
+      - request: *request-account-alice
+        response: *response-account-alice
+      - request: &request-account-bob
+          <<: *request
+          resource:
+            name: account
+            bindings:
+              email: bob@acme.org
+        response: &response-account-bob
+          <<: *response
+          content:
+            address: def456
+            email: bob@acme.org
+    invalidate: *request-account-alice
+    removed:
+      - *request-account-alice
+    remain:
+      - request: *request-account-bob
+        response: *response-account-bob
+
+  wildcard:
+    cache:
+      - request: &request-alice-acme
+          <<: *request
+          resource:
+            name: workspace
+            bindings:
+              account: abc123
+              workspace: ghi789
+        response: &response-alice-acme
+          <<: *response
+          content:
+            account: abc123
+            workspace: ghi789
+      - request: &request-alice-personal
+          <<: *request
+          resource:
+            name: workspace
+            bindings:
+              account: abc123
+              workspace: jkl012
+        response: &response-alice-personal
+          <<: *response
+          content:
+            account: abc123
+            workspace: jkl012
+    invalidate:
+      <<: *request
+      resource:
+        name: workspace
+        bindings:
+          account: abc123
+    removed:
+      - *request-alice-acme
+      - *request-alice-personal
+    remain: []
+
+  alias:
+    cache:
+      - request: *request-account-alice
+        response: *response-account-alice
+      - request: &request-account-alice-by-address
+          <<: *request
+          resource:
+            name: account
+            bindings:
+              account: abc123
+        response:
+          <<: *response-account-alice
+          headers:
+            cache-control:
+              - max-age=2
+            link:
+              - resource:
+                  domain: acme.io
+                  resource:
+                    name: account
+                    bindings:
+                      email: alice@acme.org
+                parameters:
+                  rel: alias
+    invalidate: *request-account-alice-by-address
+    removed:
+      - *request-account-alice
+      - *request-account-alice-by-address
+    remain: []

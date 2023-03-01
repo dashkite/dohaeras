@@ -1,0 +1,28 @@
+presets:
+  verify: null
+  update: null
+  release: null
+  esm: null
+  coffeescript:
+    targets:
+      node:
+        - preset: node
+          glob:
+            - '{src,test}/**/*.coffee'
+  yaml:
+    targets:
+      node:
+        - preset: json
+          glob:
+            - "test/policies.yaml"
+            - "test/api/*.yaml"
+        - preset: js
+          glob:
+            - "test/**/*.yaml"
+            - "src/**/*.yaml"
+  text:
+    targets:
+      node:
+        - preset: js
+          glob:
+            - "src/**/*.hbs"

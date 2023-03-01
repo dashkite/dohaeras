@@ -1,0 +1,19 @@
+BillingMode: PAY_PER_REQUEST
+
+AttributeDefinitions:
+  - AttributeName: key
+    AttributeType: S
+  - AttributeName: bindings
+    AttributeType: S
+
+KeySchema:
+  - AttributeName: key
+    KeyType: HASH
+  - AttributeName: bindings
+    KeyType: RANGE
+
+SSESpecification:
+  SSEEnabled: true
+  SSEType: KMS
+
+TableClass: STANDARD
